@@ -1,4 +1,4 @@
-# Query Parser
+# Query String Parser
 
 This simple and small js library parses url query string into object and vice versa.
 
@@ -8,7 +8,7 @@ It works with rack style (Ruby on Rails and Sinatra style) query string.
 
 Node.js environment
 ``` javascript
-var parser = require('query-parser')
+var parser = require('query-string-parser')
 parser.toQuery(yourObject)
 parser.toObject(yourQueryString)
 ```

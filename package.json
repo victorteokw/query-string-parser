@@ -1,9 +1,10 @@
 {
-  "name": "query-parser",
-  "title": "Query Parser",
+  "name": "query-string-parser",
+  "title": "Query String Parser",
   "description": "This simple and small js library parses url query string into object and vice versa.",
   "keywords": [
     "query",
+    "query string",
     "url",
     "search",
     "rack",

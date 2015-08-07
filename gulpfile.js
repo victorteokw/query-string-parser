@@ -7,7 +7,7 @@ function minName(fileName) {
   return fileName.slice(0, fileName.length - 2) + "min.js";
 }
 gulp.task('dist', function() {
-  ['query_parser.coffee'].forEach(
+  ['query_string_parser.coffee'].forEach(
     function(fileName){
       gulp.src(fileName)
         .pipe(coffee({bare: false}))
@@ -17,7 +17,7 @@ gulp.task('dist', function() {
 });
 
 gulp.task('minify', ['dist'], function() {
-  ['query_parser.js'].forEach(
+  ['query_string_parser.js'].forEach(
     function(fileName){
       gulp.src(fileName)
         .pipe(jshint())
