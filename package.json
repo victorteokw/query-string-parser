@@ -1,0 +1,34 @@
+{
+  "name": "query-parser",
+  "title": "Query Parser",
+  "description": "This simple and small js library parses url query string into object and vice versa.",
+  "keywords": [
+    "query",
+    "url",
+    "search",
+    "rack",
+    "parameter"
+  ],
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Horry Zhang",
+    "url": "http://www.cheunghoiyu.com",
+    "email": "yeannylam@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cheunghy/query-parser"
+  },
+  "homepage": "https://github.com/cheunghy/query-parser",
+  "main": "./query_parser.js",
+  "devDependencies": {
+    "coffee-script": ">=1.8 <2.0",
+    "gulp": "~3.8",
+    "gulp-util": "~2.2",
+    "gulp-uglify": "~0.2",
+    "gulp-concat": "~2.1",
+    "gulp-jshint": "~1.10",
+    "gulp-coffee": "~2.3.1"
+  }
+}
