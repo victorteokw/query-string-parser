@@ -10,7 +10,7 @@
     "rack",
     "parameter"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": {
     "name": "Horry Zhang",
@@ -22,7 +22,7 @@
     "url": "https://github.com/cheunghy/query-parser"
   },
   "homepage": "https://github.com/cheunghy/query-parser",
-  "main": "./query_parser.js",
+  "main": "./query_string_parser.js",
   "devDependencies": {
     "coffee-script": ">=1.8 <2.0",
     "gulp": "~3.8",
