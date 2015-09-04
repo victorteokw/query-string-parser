@@ -1,16 +1,19 @@
 var gulp = require('gulp'),
-    coffee = require('gulp-coffee'),
+    babel = require('gulp-babel'),
     concat = require('gulp-concat'),
     jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    mocha = require('gulp-mocha');
+
 function minName(fileName) {
   return fileName.slice(0, fileName.length - 2) + "min.js";
 }
+
 gulp.task('dist', function() {
-  ['query_string_parser.coffee'].forEach(
+  ['query_string_parser.es6'].forEach(
     function(fileName){
       gulp.src(fileName)
-        .pipe(coffee({bare: false}))
+        .pipe(babel())
         .pipe(gulp.dest('.'));
     }
   );
@@ -26,4 +29,8 @@ gulp.task('minify', ['dist'], function() {
         .pipe(gulp.dest('.'));
     }
   );
+});
+
+gulp.task('test', ['dist'], function() {
+  gulp.src('./test/test.js').pipe(mocha());
 });

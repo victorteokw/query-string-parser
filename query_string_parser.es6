@@ -1,10 +1,8 @@
 /*global exports */
-'use strict';
-
-(function (exports) {
+(function(exports) {
   'use strict';
 
-  var arrayMap = function arrayMap(arr, func) {
+  var arrayMap = function(arr, func) {
     var retval = [];
     for (var i = 0, len = arr.length; i < len; i++) {
       retval.push(func(arr[i]));
@@ -16,7 +14,7 @@
 
   var queryRootKey = /^([^\[\]]+)/;
 
-  var hashPlaysWell = function hashPlaysWell(hash, nextKey, keyPath) {
+  var hashPlaysWell = function(hash, nextKey, keyPath) {
     if (!hash[nextKey]) {
       return true;
     }
@@ -31,7 +29,7 @@
   };
 
   // Returns boolean indicates object empty or not
-  var objectEmpty = function objectEmpty(obj) {
+  var objectEmpty = function(obj) {
     var k, v;
     for (k in obj) {
       return false;
@@ -39,7 +37,7 @@
     return true;
   };
 
-  var _fillValue = function _fillValue(obj, key, keyPaths, value) {
+  var _fillValue = function(obj, key, keyPaths, value) {
     var lastHash, nextKey, toFill;
     if (keyPaths.length === 0) {
       if (key.length === 0) {
@@ -57,7 +55,7 @@
         }
         toFill = obj[obj.length - 1];
       } else if (key.length === 0 && nextKey.length > 0) {
-        if (obj.length === 0 || Array.isArray(obj[obj.length - 1]) || typeof obj[obj.length - 1] !== 'object') {
+        if ((obj.length === 0) || Array.isArray(obj[obj.length - 1]) || (typeof obj[obj.length - 1] !== 'object')) {
           obj.push({});
         }
         lastHash = obj[obj.length - 1];
@@ -77,7 +75,7 @@
     }
   };
 
-  var queryStringToObject = function queryStringToObject(query) {
+  var queryStringToObject = function(query) {
     query || (query = window.location.search);
     var tokens = query.split(/[?&;] */);
     var retval = {};
@@ -90,13 +88,11 @@
     for (var i = 0, len = tokens.length; i < len; i++) {
       token = tokens[i];
       if (token.length >= 0) {
-        _ref = arrayMap(token.split("="), function (t) {
-          return decodeURIComponent(t);
-        });
-        key = _ref[0];value = _ref[1];
-        if (key !== void 0 && value !== void 0) {
+        _ref = arrayMap(token.split("="), function(t){return decodeURIComponent(t);});
+        key = _ref[0]; value = _ref[1];
+        if ((key !== void 0) && (value !== void 0)) {
           keyPaths = [];
-          while (result = queryKeyPathRegExp.exec(key)) {
+          while ((result = queryKeyPathRegExp.exec(key))) {
             keyPaths.push(result[1]);
           }
           rootKey = queryRootKey.exec(key)[1];
@@ -107,11 +103,11 @@
     return retval;
   };
 
-  var objectToQueryString = function objectToQueryString(obj) {
+  var objectToQueryString = function(obj) {
     return _fillQuery(obj, '', true);
   };
 
-  var _fillQuery = function _fillQuery(obj, keyPath, root) {
+  var _fillQuery = function(obj, keyPath, root) {
     var k, newKey, o, retval, v, _i, _len;
     if (root == null) {
       root = false;
@@ -148,4 +144,5 @@
   exports.stringify = objectToQueryString;
   exports.objectToQueryString = objectToQueryString;
   exports.queryStringToObject = queryStringToObject;
+
 })(typeof exports !== "undefined" && exports != null ? exports : window);
