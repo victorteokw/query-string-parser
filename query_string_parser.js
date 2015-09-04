@@ -107,8 +107,14 @@
     return retval;
   };
 
-  var objectToQueryString = function objectToQueryString(obj) {
-    return _fillQuery(obj, '', true);
+  var objectToQueryString = function objectToQueryString(obj, options) {
+    var retval = _fillQuery(obj, '', true);
+    if (options && options.questionMark) {
+      if (retval.length > 0) {
+        retval = "?" + retval;
+      }
+    }
+    return retval;
   };
 
   var _fillQuery = function _fillQuery(obj, keyPath, root) {

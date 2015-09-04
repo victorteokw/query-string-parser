@@ -217,6 +217,24 @@ describe("compatibility with rack: ", function(){
 
   });
 
+});
 
+describe("options: ", function(){
+
+  describe("questionMark", function(){
+
+    it("prepend a question mark if has length", function(){
+      assert.equal(queryStringParser.toQuery({"a": "b"}, {questionMark: true}), "?a=b");
+    });
+
+    it("doesn't prepend a question mark if has length", function(){
+      assert.equal(queryStringParser.toQuery({}, {questionMark: true}), "");
+    });
+
+    it("will not prepend a question mark if option is false", function(){
+      assert.equal(queryStringParser.toQuery({"a": "b"}, {questionMark: false}), "a=b");
+    });
+
+  });
 
 });

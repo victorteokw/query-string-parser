@@ -103,8 +103,14 @@
     return retval;
   };
 
-  var objectToQueryString = function(obj) {
-    return _fillQuery(obj, '', true);
+  var objectToQueryString = function(obj, options) {
+    var retval = _fillQuery(obj, '', true);
+    if (options && options.questionMark) {
+      if (retval.length > 0) {
+        retval = "?" + retval;
+      }
+    }
+    return retval;
   };
 
   var _fillQuery = function(obj, keyPath, root) {
