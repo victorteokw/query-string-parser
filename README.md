@@ -4,7 +4,7 @@ This simple and small js library parses url query string into object and vice ve
 
 It works with rack style (Ruby on Rails and Sinatra style) query string.
 
-# Usage
+## Usage
 
 Node.js environment
 ``` javascript
@@ -35,3 +35,18 @@ queryString = toQuery(paramObject)
 parseQuery(queryString)
 => And the object comes back
 ```
+
+## Change log
+
+- Version 0.1.2 (2015-09-04)
+  - Fixed boolean value bug
+  - Add questionMark option
+- Version 0.1.1 (2015-08-07)
+  - Fixed require bug on node.js
+- Version 0.1.0 (2015-08-07)
+  - Convert query string to query object
+  - Convert query object to query string
+
+## Contribution
+
+If you find any bugs or you want any features, please open issue or submit pull request.
