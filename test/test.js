@@ -238,3 +238,19 @@ describe("options: ", function(){
   });
 
 });
+
+describe("types: ", function(){
+
+  it("serialize number into string", function(){
+    assert.equal(queryStringParser.toQuery({"a": 1}), "a=1");
+  });
+
+  it("serialize string into string", function(){
+    assert.equal(queryStringParser.toQuery({"a": "yes"}), "a=yes");
+  });
+
+  it("serialize boolean into string", function(){
+    assert.equal(queryStringParser.toQuery({"a": true}), "a=true");
+  });
+
+});

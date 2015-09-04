@@ -37,6 +37,12 @@
     return true;
   };
 
+  var primitiveObj = function(obj) {
+    return typeof obj === 'number' ||
+      typeof obj === 'string' ||
+      typeof obj === 'boolean';
+  };
+
   var _fillValue = function(obj, key, keyPaths, value) {
     var lastHash, nextKey, toFill;
     if (keyPaths.length === 0) {
@@ -103,6 +109,8 @@
     return retval;
   };
 
+
+
   var objectToQueryString = function(obj, options) {
     var retval = _fillQuery(obj, '', true);
     if (options && options.questionMark) {
@@ -118,7 +126,8 @@
     if (root == null) {
       root = false;
     }
-    if (typeof obj === 'number' || typeof obj === 'string') {
+
+    if (primitiveObj(obj)) {
       return encodeURIComponent(keyPath) + '=' + encodeURIComponent(obj);
     } else if (Array.isArray(obj) && obj.length > 0) {
       retval = [];

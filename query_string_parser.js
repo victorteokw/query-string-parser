@@ -39,6 +39,10 @@
     return true;
   };
 
+  var primitiveObj = function primitiveObj(obj) {
+    return typeof obj === 'number' || typeof obj === 'string' || typeof obj === 'boolean';
+  };
+
   var _fillValue = function _fillValue(obj, key, keyPaths, value) {
     var lastHash, nextKey, toFill;
     if (keyPaths.length === 0) {
@@ -122,7 +126,8 @@
     if (root == null) {
       root = false;
     }
-    if (typeof obj === 'number' || typeof obj === 'string') {
+
+    if (primitiveObj(obj)) {
       return encodeURIComponent(keyPath) + '=' + encodeURIComponent(obj);
     } else if (Array.isArray(obj) && obj.length > 0) {
       retval = [];
