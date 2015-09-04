@@ -1,5 +1,5 @@
-# Query String Parser
-[![Build Status](https://travis-ci.org/cheunghy/query-parser.png?branch=master)](https://travis-ci.org/cheunghy/query-parser)
+# Query String Parser [![Build Status](https://travis-ci.org/cheunghy/query-parser.png?branch=master)](https://travis-ci.org/cheunghy/query-parser)
+
 This simple and small js library parses url query string into object and vice versa.
 
 It works with rack style (Ruby on Rails and Sinatra style) query string.
