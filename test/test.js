@@ -172,6 +172,18 @@ describe("compatibility with rack: ", function(){
 
     });
 
+    describe('omit empty array', function(){
+
+      it("should not generate empty string for empty array", function(){
+        assert.equal(queryStringParser.toQuery({
+          a: [],
+          b: [],
+          c: []
+        }), "");
+      });
+
+    });
+
   });
 
   describe('query to object: ', function(){

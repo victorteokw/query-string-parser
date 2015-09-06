@@ -122,7 +122,7 @@
   };
 
   var _fillQuery = function(obj, keyPath, root) {
-    var k, newKey, o, retval, v, _i, _len;
+    var k, newKey, o, retval, v, _i, _len, fillResult;
     if (root == null) {
       root = false;
     }
@@ -145,11 +145,14 @@
         } else {
           newKey = "[" + k + "]";
         }
-        retval.push(_fillQuery(v, keyPath + newKey));
+        fillResult = _fillQuery(v, keyPath + newKey);
+        if (fillResult.length > 0) {
+          retval.push(fillResult);
+        }
       }
       return retval.join("&");
     }
-    return "";
+    return '';
   };
 
   exports.toQuery = objectToQueryString;
