@@ -1,16 +1,10 @@
 /*global exports */
 'use strict';
 
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
+
 (function (exports) {
   'use strict';
-
-  var arrayMap = function arrayMap(arr, func) {
-    var retval = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
-      retval.push(func(arr[i]));
-    }
-    return retval;
-  };
 
   var queryKeyPathRegExp = /\[([^\]]*)\]/gi;
 
@@ -32,8 +26,7 @@
 
   // Returns boolean indicates object empty or not
   var objectEmpty = function objectEmpty(obj) {
-    var k, v;
-    for (k in obj) {
+    for (var k in obj) {
       return false;
     }
     return true;
@@ -81,29 +74,30 @@
     }
   };
 
-  var queryStringToObject = function queryStringToObject(query) {
-    query || (query = window.location.search);
+  var queryStringToObject = function queryStringToObject() {
+    var query = arguments.length <= 0 || arguments[0] === undefined ? window.location.search : arguments[0];
+
     var tokens = query.split(/[?&;] */);
     var retval = {};
-    var token;
-    var _ref;
-    var key, value;
-    var keyPaths;
-    var result;
-    var rootKey;
     for (var i = 0, len = tokens.length; i < len; i++) {
-      token = tokens[i];
+      var token = tokens[i];
       if (token.length >= 0) {
-        _ref = arrayMap(token.split("="), function (t) {
+        var _token$split$map = token.split("=").map(function (t) {
           return decodeURIComponent(t);
         });
-        key = _ref[0];value = _ref[1];
+
+        var _token$split$map2 = _slicedToArray(_token$split$map, 2);
+
+        var key = _token$split$map2[0];
+        var value = _token$split$map2[1];
+
         if (key !== void 0 && value !== void 0) {
-          keyPaths = [];
+          var keyPaths = [];
+          var result = undefined;
           while (result = queryKeyPathRegExp.exec(key)) {
             keyPaths.push(result[1]);
           }
-          rootKey = queryRootKey.exec(key)[1];
+          var rootKey = queryRootKey.exec(key)[1];
           _fillValue(retval, rootKey, keyPaths, value);
         }
       }
@@ -115,7 +109,7 @@
     var retval = _fillQuery(obj, '', true);
     if (options && options.questionMark) {
       if (retval.length > 0) {
-        retval = "?" + retval;
+        retval = '?' + retval;
       }
     }
     return retval;
@@ -143,7 +137,7 @@
         if (root) {
           newKey = k;
         } else {
-          newKey = "[" + k + "]";
+          newKey = '[' + k + ']';
         }
         fillResult = _fillQuery(v, keyPath + newKey);
         if (fillResult.length > 0) {
@@ -160,6 +154,4 @@
   exports.parseQuery = queryStringToObject;
   exports.querify = objectToQueryString;
   exports.stringify = objectToQueryString;
-  exports.objectToQueryString = objectToQueryString;
-  exports.queryStringToObject = queryStringToObject;
 })(typeof exports !== "undefined" && exports != null ? exports : window);

@@ -38,6 +38,8 @@ parseQuery(queryString)
 
 ## Change log
 
+- Version 0.1.4 (2015-09-12)
+  - Remove `objectToQueryString` and `queryStringToObject`
 - Version 0.1.3 (2015-09-06)
   - Fixed empty array inside hash result to '&' bug
 - Version 0.1.2 (2015-09-04)

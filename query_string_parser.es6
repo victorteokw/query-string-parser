@@ -2,24 +2,16 @@
 (function(exports) {
   'use strict';
 
-  var arrayMap = function(arr, func) {
-    var retval = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
-      retval.push(func(arr[i]));
-    }
-    return retval;
-  };
+  const queryKeyPathRegExp = /\[([^\]]*)\]/gi;
 
-  var queryKeyPathRegExp = /\[([^\]]*)\]/gi;
+  const queryRootKey = /^([^\[\]]+)/;
 
-  var queryRootKey = /^([^\[\]]+)/;
-
-  var hashPlaysWell = function(hash, nextKey, keyPath) {
+  const hashPlaysWell = function(hash, nextKey, keyPath) {
     if (!hash[nextKey]) {
       return true;
     }
-    var nest = hash[nextKey];
-    for (var i = 0, len = keyPath.length; i < len; i++) {
+    let nest = hash[nextKey];
+    for (let i = 0, len = keyPath.length; i < len; i++) {
       nest = nest[keyPath[i]];
       if (!nest) {
         return true;
@@ -29,21 +21,20 @@
   };
 
   // Returns boolean indicates object empty or not
-  var objectEmpty = function(obj) {
-    var k, v;
-    for (k in obj) {
+  const objectEmpty = function(obj) {
+    for (let k in obj) {
       return false;
     }
     return true;
   };
 
-  var primitiveObj = function(obj) {
+  const primitiveObj = function(obj) {
     return typeof obj === 'number' ||
       typeof obj === 'string' ||
       typeof obj === 'boolean';
   };
 
-  var _fillValue = function(obj, key, keyPaths, value) {
+  const _fillValue = function(obj, key, keyPaths, value) {
     var lastHash, nextKey, toFill;
     if (keyPaths.length === 0) {
       if (key.length === 0) {
@@ -81,27 +72,20 @@
     }
   };
 
-  var queryStringToObject = function(query) {
-    query || (query = window.location.search);
-    var tokens = query.split(/[?&;] */);
-    var retval = {};
-    var token;
-    var _ref;
-    var key, value;
-    var keyPaths;
-    var result;
-    var rootKey;
-    for (var i = 0, len = tokens.length; i < len; i++) {
-      token = tokens[i];
+  const queryStringToObject = function(query = window.location.search) {
+    const tokens = query.split(/[?&;] */);
+    let retval = {};
+    for (let i = 0, len = tokens.length; i < len; i++) {
+      let token = tokens[i];
       if (token.length >= 0) {
-        _ref = arrayMap(token.split("="), function(t){return decodeURIComponent(t);});
-        key = _ref[0]; value = _ref[1];
+        let [key, value] = token.split("=").map((t) => decodeURIComponent(t));
         if ((key !== void 0) && (value !== void 0)) {
-          keyPaths = [];
+          let keyPaths = [];
+          let result;
           while ((result = queryKeyPathRegExp.exec(key))) {
             keyPaths.push(result[1]);
           }
-          rootKey = queryRootKey.exec(key)[1];
+          let rootKey = queryRootKey.exec(key)[1];
           _fillValue(retval, rootKey, keyPaths, value);
         }
       }
@@ -109,19 +93,17 @@
     return retval;
   };
 
-
-
-  var objectToQueryString = function(obj, options) {
-    var retval = _fillQuery(obj, '', true);
+  const objectToQueryString = function(obj, options) {
+    let retval = _fillQuery(obj, '', true);
     if (options && options.questionMark) {
       if (retval.length > 0) {
-        retval = "?" + retval;
+        retval = `?${retval}`;
       }
     }
     return retval;
   };
 
-  var _fillQuery = function(obj, keyPath, root) {
+  const _fillQuery = function(obj, keyPath, root) {
     var k, newKey, o, retval, v, _i, _len, fillResult;
     if (root == null) {
       root = false;
@@ -143,7 +125,7 @@
         if (root) {
           newKey = k;
         } else {
-          newKey = "[" + k + "]";
+          newKey = `[${k}]`;
         }
         fillResult = _fillQuery(v, keyPath + newKey);
         if (fillResult.length > 0) {
@@ -160,7 +142,5 @@
   exports.parseQuery = queryStringToObject;
   exports.querify = objectToQueryString;
   exports.stringify = objectToQueryString;
-  exports.objectToQueryString = objectToQueryString;
-  exports.queryStringToObject = queryStringToObject;
 
 })(typeof exports !== "undefined" && exports != null ? exports : window);
