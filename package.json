@@ -1,7 +1,7 @@
 {
   "name": "query-string-parser",
   "title": "Query String Parser",
-  "description": "Rack style query string parser for Node.js",
+  "description": "Rack style query string parser for Node.js.",
   "keywords": [
     "query",
     "query string",
