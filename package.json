@@ -1,7 +1,7 @@
 {
   "name": "query-string-parser",
   "title": "Query String Parser",
-  "description": "This simple and small js library parses url query string into object and vice versa.",
+  "description": "Rack style query string parser for Node.js",
   "keywords": [
     "query",
     "query string",
@@ -10,18 +10,17 @@
     "rack",
     "parameter"
   ],
-  "version": "0.1.4",
+  "version": "0.2.0",
   "license": "MIT",
   "author": {
-    "name": "Horry Zhang",
-    "url": "http://www.cheunghoiyu.com",
+    "name": "Zhang Kaiyu",
     "email": "yeannylam@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cheunghy/query-parser"
+    "url": "https://github.com/zhangkaiyulw/query-parser"
   },
-  "homepage": "https://github.com/cheunghy/query-parser",
+  "homepage": "https://github.com/zhangkaiyulw/query-parser",
   "main": "./query_string_parser.js",
   "devDependencies": {
     "coffee-script": ">=1.8 <2.0",
