@@ -23,7 +23,6 @@
   "homepage": "https://github.com/zhangkaiyulw/query-parser",
   "main": "./query_string_parser.js",
   "devDependencies": {
-    "coffee-script": ">=1.8 <2.0",
     "gulp": "~3.8",
     "gulp-util": "~2.2",
     "gulp-uglify": "~0.2",
