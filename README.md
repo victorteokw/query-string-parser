@@ -1,4 +1,4 @@
-# Query String Parser [![Build Status](https://travis-ci.org/zhangkaiyulw/query-parser.png?branch=master)](https://travis-ci.org/zhangkaiyulw/query-parser)
+# Query String Parser [![Build Status](https://travis-ci.org/zhangkaiyulw/query-parser.svg?branch=master)](https://travis-ci.org/zhangkaiyulw/query-parser)
 
 This simple and small js library parses url query string into object and vice versa.
 
