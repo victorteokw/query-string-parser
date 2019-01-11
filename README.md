@@ -38,6 +38,8 @@ parseQuery(queryString)
 
 ## Change log
 
+- Version 0.2.2 (2019-01-11)
+  - Fixing passing empty parameter crashes in node.js
 - Version 0.2.1 (2018-06-13)
   - Testing on newer node.js environments
 - Version 0.1.4 (2015-09-12)

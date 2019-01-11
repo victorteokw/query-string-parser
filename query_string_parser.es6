@@ -72,7 +72,7 @@
     }
   };
 
-  const queryStringToObject = function(query = window.location.search) {
+  const queryStringToObject = function(query) {
     const tokens = query.split(/[?&;] */);
     let retval = {};
     for (let i = 0, len = tokens.length; i < len; i++) {

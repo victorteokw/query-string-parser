@@ -74,9 +74,7 @@ var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = 
     }
   };
 
-  var queryStringToObject = function queryStringToObject() {
-    var query = arguments.length <= 0 || arguments[0] === undefined ? window.location.search : arguments[0];
-
+  var queryStringToObject = function queryStringToObject(query) {
     var tokens = query.split(/[?&;] */);
     var retval = {};
     for (var i = 0, len = tokens.length; i < len; i++) {
