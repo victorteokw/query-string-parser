@@ -73,6 +73,7 @@
   };
 
   const queryStringToObject = function(query) {
+    if (!query) return undefined;
     const tokens = query.split(/[?&;] */);
     let retval = {};
     for (let i = 0, len = tokens.length; i < len; i++) {
