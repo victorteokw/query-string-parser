@@ -1,4 +1,4 @@
-# Query String Parser [![Build Status](https://travis-ci.org/zhangkaiyulw/query-parser.svg?branch=master)](https://travis-ci.org/zhangkaiyulw/query-parser)
+# Query String Parser [![Build Status](https://travis-ci.org/victorteokw/query-parser.svg?branch=master)](https://travis-ci.org/victorteokw/query-parser)
 
 This simple and small js library parses url query string into object and vice versa.
 
@@ -38,6 +38,8 @@ parseQuery(queryString)
 
 ## Change log
 
+- Version 0.2.4 (2024-04-14)
+  - Add TypeScript definitions
 - Version 0.2.3 (2019-01-11)
   - Fixing passing empty parameter crashes in node.js
 - Version 0.2.1 (2018-06-13)
