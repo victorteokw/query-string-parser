@@ -1,16 +1,29 @@
-# Query String Parser [![Build Status](https://travis-ci.org/victorteokw/query-parser.svg?branch=master)](https://travis-ci.org/victorteokw/query-parser)
+# Query String Parser [![Build Status](https://img.shields.io/github/actions/workflow/status/victorteokw/query-string-parser/CI.yml.svg?style=flat-square&color=green&logo=github)](https://github.com/victorteokw/query-string-parser/actions)
 
-This simple and small js library parses url query string into object and vice versa.
+A JavaScript query string parser which works with Rack style (Ruby on Rails and
+Sinatra style) query string.
 
-It works with rack style (Ruby on Rails and Sinatra style) query string.
+* ✅ Object to query string
+* ✅ Query string to object
+* ✅ Works for simple query string like `"?a=1&b=2"`
+* ✅ For complicated query, this package is compatible with Ruby Rack style
+* ✅ Type-safe with TypeScript interface
+
+## Installation
+
+```sh
+npm i query-string-parser
+```
 
 ## Usage
 
 Node.js environment
 ``` javascript
-var parser = require('query-string-parser')
-parser.toQuery(yourObject)
-parser.fromQuery(yourQueryString)
+const { toQuery, fromQuery } = require('query-string-parser')
+const queryString = toQuery({ "a": 1 })
+=> "a=1"
+fromQuery("a=1")
+=> { "a": "1" }
 ```
 
 Browser environment
@@ -30,7 +43,7 @@ paramObject = {
   date: "Today"
 }
 queryString = toQuery(paramObject)
-=>  "posts%5B%5D%5Btitle%5D=Post%201&posts%5B%5D%5Btags%5D%5B%5D=node&posts%5B%5D%5Btags%5D%5B%5D=script&posts%5B%5D%5Btags%5D%5B%5D=javascript&posts%5B%5D%5Btitle%5D=Post%202&posts%5B%5D%5Btags%5D%5B%5D=node&posts%5B%5D%5Btags%5D%5B%5D=why&posts%5B%5D%5Btags%5D%5B%5D=not&author=Somebody&date=Today"
+=> "posts%5B%5D%5Btitle%5D=Post%201&posts%5B%5D%5Btags%5D%5B%5D=node&posts%5B%5D%5Btags%5D%5B%5D=script&posts%5B%5D%5Btags%5D%5B%5D=javascript&posts%5B%5D%5Btitle%5D=Post%202&posts%5B%5D%5Btags%5D%5B%5D=node&posts%5B%5D%5Btags%5D%5B%5D=why&posts%5B%5D%5Btags%5D%5B%5D=not&author=Somebody&date=Today"
 
 parseQuery(queryString)
 => And the object comes back
@@ -38,6 +51,8 @@ parseQuery(queryString)
 
 ## Change log
 
+- Version 1.0.0 (2025-01-05)
+  - Update TypeScript definitions
 - Version 0.2.4 (2024-04-14)
   - Add TypeScript definitions
 - Version 0.2.3 (2019-01-11)

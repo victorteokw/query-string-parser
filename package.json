@@ -1,6 +1,6 @@
 {
   "name": "query-string-parser",
-  "title": "Query String Parser",
+  "version": "1.0.0",
   "description": "Rack style query string parser for Node.js.",
   "keywords": [
     "query",
@@ -10,27 +10,27 @@
     "rack",
     "parameter"
   ],
-  "version": "0.2.4",
   "license": "MIT",
-  "author": {
-    "name": "Zhang Kaiyu",
-    "email": "yeannylam@gmail.com"
-  },
+  "author": "Victor Teo <yeannylam@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/victorteokw/query-parser"
   },
   "homepage": "https://github.com/victorteokw/query-parser",
-  "main": "./query_string_parser.js",
-  "types": "./query_string_parser.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "mocha",
+    "test-cov": "nyc --include index.js --reporter=lcov --reporter=text mocha"
+  },
   "devDependencies": {
-    "gulp": "~3.8",
-    "gulp-util": "~2.2",
-    "gulp-uglify": "~0.2",
-    "gulp-concat": "~2.1",
-    "gulp-jshint": "~1.10",
-    "gulp-babel": "~5.2",
-    "gulp-mocha": "~2.1",
-    "mocha": "~2.3"
+    "mocha": "^11",
+    "nyc": "^17"
   }
 }

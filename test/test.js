@@ -1,5 +1,5 @@
 var assert = require("assert");
-var queryStringParser = require("../query_string_parser.js");
+var queryStringParser = require("../index.js");
 
 describe("compatibility with rack: ", function(){
 
